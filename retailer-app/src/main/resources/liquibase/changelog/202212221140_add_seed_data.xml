@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+		http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet author="hitham-ramzy" id="202212220504-1">
+        <loadData encoding="UTF-8"
+                  file="liquibase/products.csv"
+                  separator=";"
+                  tableName="product"/>
+    </changeSet>
+
+    <changeSet author="hitham-ramzy" id="202212220504-2">
+        <loadData encoding="UTF-8"
+                  file="liquibase/orders.csv"
+                  separator=";"
+                  tableName="app_order"/>
+    </changeSet>
+
+    <changeSet author="hitham-ramzy" id="202212220504-3">
+        <loadData encoding="UTF-8"
+                  file="liquibase/orderProducts.csv"
+                  separator=";"
+                  tableName="order_product"/>
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,32 @@
+Command to start Vault server in dev mode
+-----------------------------------------------
+vault server --dev
+vault server --dev --dev-root-token-id="00000000-0000-0000-0000-000000000000"
+
+Vault login
+http://127.0.0.1:8200/
+
+Command to write to Vault
+--------------------------
+vault kv put secret/booking-service @booking-service.json
+vault kv put secret/product-service @product-service.json
+vault kv put secret/stock-service @stock-service.json
+
+Command to read from Vault
+--------------------------
+vault kv get secret/booking-service
+vault kv get secret/product-service
+
+Starting RabbitMQ as docker container
+----------------------------------------
+docker run -it --rm --name rabbitmq -p 5672:5672 -p 15672:15672 rabbitmq:3.8-management
+
+To Start the Keycloak server from /bin directory
+-------------------------------------------------
+standalone.bat -Djboss.http.port=9090
+
+----Keycloak API Gateway secret---------
+8221591c-f144-4bd1-a351-bc842461aee4
+
+Keycloak login
+http://localhost:9090/

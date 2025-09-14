@@ -1,0 +1,3 @@
+id	code	quantity
+1	laptop_2021	5
+2	phone_2021	10

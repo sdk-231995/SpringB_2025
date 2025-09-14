@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+		http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet author="hitham-ramzy" id="202212221140-1">
+        <createTable tableName="product">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="name" type="varchar(200)">
+                <constraints unique="true" nullable="false"/>
+            </column>
+            <column name="description" type="varchar(5000)"/>
+            <column name="price" type="double">
+                <constraints nullable="false"/>
+            </column>
+            <column name="available_quantity" type="double" defaultValueNumeric="0">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="hitham-ramzy" id="202212221140-2">
+        <createTable tableName="app_order">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="customer_name" type="varchar(200)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="customer_email" type="varchar(200)"/>
+            <column name="customer_phone" type="varchar(20)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="time" type="timestamp" defaultValueDate="now()">
+                <constraints nullable="false"/>
+            </column>
+            <column name="total_price" type="double">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="hitham-ramzy" id="202212221140-3">
+        <createTable tableName="order_product">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="order_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="product_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="quantity" type="int">
+                <constraints nullable="false"/>
+            </column>
+            <column name="quantity_price" type="double">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="hitham-ramzy" id="202212221140-4">
+        <addForeignKeyConstraint baseColumnNames="order_id"
+                                 baseTableName="order_product"
+                                 constraintName="fk_order_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="app_order"/>
+
+        <addForeignKeyConstraint baseColumnNames="product_id"
+                                 baseTableName="order_product"
+                                 constraintName="fk_product_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="product"/>
+    </changeSet>
+</databaseChangeLog>
